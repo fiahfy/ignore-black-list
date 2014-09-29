@@ -1,0 +1,20 @@
+{
+  "name": "My Extension",
+  "version": "0.0.0",
+  "description": "This is my extension.",
+
+  "manifest_version": 2,
+
+  "icons": {
+  },
+
+  "browser_action": {
+    "default_popup": "html/popup.html"
+  },
+
+  "permissions": [
+    "storage"
+  ],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'"
+}
