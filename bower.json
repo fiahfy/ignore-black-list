@@ -1,6 +1,6 @@
 {
-  "name": "chrome-extension-angular-skeleton",
-  "version": "0.0.0",
+  "name": "ignore-black-list",
+  "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
     "jquery": "~2.1.1",

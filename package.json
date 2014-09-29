@@ -1,13 +1,13 @@
 {
-  "name": "chrome-extension-angular-skeleton",
-  "version": "0.0.0",
+  "name": "ignore-black-list",
+  "version": "1.0.0",
   "author": {
     "name": "fiahfy"
   },
-  "homepage": "https://github.com/fiahfy/chrome-extension-angular-skeleton",
+  "homepage": "https://github.com/fiahfy/ignore-black-list",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fiahfy/chrome-extension-angular-skeleton.git"
+    "url": "https://github.com/fiahfy/ignore-black-list.git"
   },
   "licenses": [
     {

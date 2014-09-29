@@ -4,23 +4,34 @@
 
 var services = angular.module('services', []);
 
-services.service('CounterService', function() {
-  var me = this;
-  this.increment = function(callback){
-    me.get(function(count){
-      me.set(++count, function(){
-        callback(count);
-      });
-    });
+services.service('IgnoreService', function() {
+  this.setup = function(){
+    chrome.webRequest.onBeforeRequest.addListener(
+        function(details) {
+          var url = details.url;
+          console.log(url);
+
+          var m = url.match(/\+\-site:/i);
+          if (m) {
+            return {};
+          }
+
+          var match = url.match(/^(.*[?&]q=.*?)(&.*)?$/i);
+          if (match) {
+            url = match[1] + '+-site:*.dummy.com' + (match[2] ? match[2] : '');
+          }
+          match = url.match(/^(.*[?&]oq=.*?)(&.*)?$/i);
+          if (match) {
+            url = match[1] + '+-site:*.dummy.com' + (match[2] ? match[2] : '');
+          }
+          console.info(url);
+
+          return {
+            redirectUrl: url
+          };
+        },
+        {urls: ["*://*/search*"]},
+        ["blocking"]
+    );
   };
-  this.get = function(callback){
-    chrome.storage.local.get('count', function(items){
-      callback(items['count'] || 0);
-    });
-  };
-  this.set = function(count, callback){
-    chrome.storage.local.set({'count': count}, function() {
-      callback();
-    });
-  }
 });
